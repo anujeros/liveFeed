@@ -1,0 +1,18 @@
+testing logs
+testing logs
+testing logs
+testing logs
+testing logs {u'id': 1, u'title': u'somnath'}
+testing logs {u'id': 1, u'title': u'somnath'}
+testing logs {u'id': 1, u'title': u'somnath'}
+testing logs "{u'id': 1, u'title': u'somnath'}"
+testing logs {
+	"id": 1,
+	"title": "somnath",
+	"status":"online"
+}
+testing logs {
+	"id": 1,
+	"title": "somnath",
+	"status":"online"
+}
