@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask import Flask, request
-import logging
+import logging, hashlib
 from logging.handlers import RotatingFileHandler
 
 
@@ -11,13 +11,16 @@ app = Flask(__name__)
 @app.route('/', methods=['POST'])
 def index():
 
-
-    print (request.is_json)
-
     content = request.get_json()
-    print content['status']
+    token = "something"
+    timeToken = content['time'] + token
+    print timeToken
+
     print (content)
-    if content:
+    m = hashlib.md5(timeToken)
+    hashstr = m.hexdigest()
+    print hashstr
+    if hashstr == content['digest']:
         app.logger.info('testing logs ' + str(request.data))
         return 'JSON posted'
     else:
