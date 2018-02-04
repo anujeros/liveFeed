@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 
 
-@app.route('/', methods=['POST'])
+@app.route('/liveStatus', methods=['POST'])
 def index():
 
     content = request.get_json()
@@ -21,7 +21,8 @@ def index():
     hashstr = m.hexdigest()
     print hashstr
     if hashstr == content['digest']:
-        app.logger.info('testing logs ' + str(request.data))
+	print 'Writing to logs'
+        app.logger.info(str(request.data))
         return 'JSON posted'
     else:
         return 'forbidden'
