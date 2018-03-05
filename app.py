@@ -12,27 +12,29 @@ app = Flask(__name__)
 def index():
 
     content = request.get_json()
-    token = "something"
-    timeToken = content['time'] + token
-    print timeToken
-
     print (content)
-    m = hashlib.md5(timeToken)
-    hashstr = m.hexdigest()
-    print hashstr
-    if hashstr == content['digest']:
-	print 'Writing to logs'
-        app.logger.info(str(request.data))
-        return 'JSON posted'
-    else:
-        return 'forbidden'
+    app.logger.info(str(request.data))
+   # token = "something"
+   # timeToken = content['time'] + token
+   # print timeToken
+
+    #print (content)
+    #m = hashlib.md5(timeToken)
+    #hashstr = m.hexdigest()
+    #print hashstr
+    #if hashstr == content['digest']:
+#	print 'Writing to logs'
+ #       app.logger.info(str(request.data))
+    return 'JSON posted'
+    #else:
+    #return 'forbidden'
 
 # if __name__ == '__main__':
 #     app.run(debug=True)
 
 if __name__ == "__main__":
     # initialize the log handler
-    logHandler = RotatingFileHandler('info.log', maxBytes=1000, backupCount=1)
+    logHandler = RotatingFileHandler('/usr/local/projects/liveFeed/info.log', maxBytes=1000, backupCount=1)
 
     # set the log handler level
     logHandler.setLevel(logging.INFO)
@@ -41,5 +43,5 @@ if __name__ == "__main__":
     app.logger.setLevel(logging.INFO)
 
     app.logger.addHandler(logHandler)
-    app.run(debug=True)
+    app.run(debug=True,host='0.0.0.0' ,port=8000)
 
