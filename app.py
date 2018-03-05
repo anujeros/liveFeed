@@ -34,7 +34,7 @@ def index():
 
 if __name__ == "__main__":
     # initialize the log handler
-    logHandler = RotatingFileHandler('/usr/local/projects/liveFeed/info.log', maxBytes=1000, backupCount=1)
+    logHandler = RotatingFileHandler('/usr/local/projects/liveFeed/info.log', maxBytes=0, backupCount=0)
 
     # set the log handler level
     logHandler.setLevel(logging.INFO)
