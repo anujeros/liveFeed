@@ -18,3 +18,4 @@ testing logs {
 }
 testing logs {"time":"2014-10-16 03:13:31 UTC","digest":"d93053a1875c034384bb4fb06b20792f","stream":"rtmp://example.com/monitored/stream","status":"offline", "checkpoints": ["New York, USA", "Private Checkpoint"]
 }
+{"time":"2014-10-16 03:13:31 UTC","digest":"d93053a1875c034384bb4fb06b20792f","stream":"test","status":"offline", "checkpoints": ["New York, USA", "Private Checkpoint"]}
