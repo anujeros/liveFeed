@@ -1,11 +1,6 @@
 create database liveFeed;
 ALTER DATABASE liveFeed  CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-id
-stream name
-stream link
-status
-datetime
 
 // TO do: Set everyday db backup
 
@@ -14,7 +9,7 @@ CREATE TABLE `live_status` (
   `stream_name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `stream_link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `time` datetime DEFAULT NULL,
+  `stream_time` datetime DEFAULT NULL,
   `create_dt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci

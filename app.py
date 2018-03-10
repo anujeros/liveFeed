@@ -2,6 +2,7 @@
 from flask import Flask, request
 import logging, hashlib, MySQLdb
 from logging.handlers import RotatingFileHandler
+from datetime import datetime
 
 
 app = Flask(__name__)
@@ -11,10 +12,24 @@ app = Flask(__name__)
 @app.route('/liveStatus', methods=['POST'])
 def index():
     app.logger.info(str(request.data))
-    print request.data
+#    #print request.data
+    content = request.get_json()
+    stream = content['stream']
+    status = content['status']
+    stream_time = content['time']
+#    #stream_time = Convert.ToDateTime(stream_time)
+
+    if str(stream_time)[-3:] == 'UTC':
+        stream_time = stream_time[:-3]
+    #print stream_time
+    c, conn = connection()
+    c.execute("insert into live_status (stream_name, status, time) values (%s,%s,%s)", (stream, status, stream_time))
+    conn.commit()
+    c.close()
+    conn.close()
     return 'JSON posted'
 
-    # content = request.get_json()
+
     # token = "something"
     # timeToken = content['time'] + token
     # print timeToken
@@ -32,7 +47,7 @@ def index():
 def connection():
     conn = MySQLdb.connect(host="localhost",
                            user = "root",
-                           passwd = "anuj!",
+                           passwd = "anuj",
                            db = "liveFeed")
     c = conn.cursor()
 
